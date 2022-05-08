@@ -1,0 +1,8 @@
+npm install axios --save
+npm install dayjs --save
+npm install pinia --save
+npm install element-plus --save
+npm install -D unplugin-vue-components unplugin-auto-import
+npm install @element-plus/icons-vue
+npm install vue-router@4
+npm install clipboard --save
