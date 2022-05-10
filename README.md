@@ -11,4 +11,6 @@
   - [ ] Course
     - [ ] CourseTitle
     - [ ] CourseCard (留空)
+  
+  - [ ] Chinese - English - French
 
