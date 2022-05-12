@@ -7,6 +7,7 @@ const app = createApp(App)
 import {createPinia} from "pinia";
 import {createI18n} from "vue-i18n";
 import {languages} from "./languages";
+import router from "./router";
 
 app.use(createPinia())
 
@@ -16,6 +17,8 @@ app.use(createI18n({
     fallbackLocale: "en",
     messages: languages
 }))
+
+app.use(router)
 // endregion
 
 app.mount('#app')
