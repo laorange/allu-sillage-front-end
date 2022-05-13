@@ -16,7 +16,7 @@ const {t} = useI18n({
     },
     "fr": {
       "home": "Accueil",
-      "about": "Info"
+      "about": "À propos de"
     }
   }
 })

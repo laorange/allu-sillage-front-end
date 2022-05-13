@@ -1,20 +1,16 @@
 <script setup lang="ts">
-
 import {computed} from "vue";
 import {useI18n} from "vue-i18n";
 
-const {locale} = useI18n()
-
-const gradeNameList = computed(() => {
-  switch (locale.value) {
-    case "zh":
-      return ["大一", "大二", "大三", "大四", "研一", "研二", "研三", "自定义"]
-    case "en":
-      return ["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Master 1", "Master 2", "Master 3", "Others"]
-    case "fr":
-      return ["Année 0", "Année 1", "Année 2", "S1S2", "S3S4", "S5S6", "S7S8", "Les autres"]
+const {t} = useI18n({
+  messages: {
+    zh: {'gradeNameList': JSON.stringify(["大一", "大二", "大三", "大四", "研一", "研二", "研三", "自定义"])},
+    en: {'gradeNameList': JSON.stringify(["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Master 1", "Master 2", "Master 3", "Others"])},
+    fr: {'gradeNameList': JSON.stringify(["Année 1", "Année 2", "Année 3", "Année 4", "Année 5", "Année 6", "Année 7", "Les autres"])},
   }
-});
+})
+
+const gradeNameList = computed(() => JSON.parse(t('gradeNameList')) as string[])
 
 </script>
 
