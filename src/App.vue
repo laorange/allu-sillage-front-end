@@ -2,11 +2,15 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
+import TabBar from "./components/TabBar.vue";
+
+
 </script>
 
 <template>
 
   <router-view></router-view>
+  <tab-bar></tab-bar>
 
 </template>
 
@@ -17,6 +21,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+.van-grid-item__content {
+  background-color: transparent !important;
 }
 </style>
