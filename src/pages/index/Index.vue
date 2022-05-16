@@ -1,21 +1,35 @@
 <script setup lang="ts">
 import {useI18n} from "vue-i18n";
 
+import GradeList from "../../components/index/GradeList.vue";
+import SillageTitle from "../../components/SillageTitle.vue";
+import LanguageSwitch from "../../components/LanguageSwitch.vue";
+
+
 const {t} = useI18n()
 </script>
 
 <template>
-  <h1 class="title"><span class="title-sillage">Si</span>ll<span class="title-sillage">a</span>g<span class="title-sillage">e</span></h1>
-  <h2>{{ t("title") }}</h2>
+  <div class="index-body">
+    <div class="title-area">
+      <sillage-title></sillage-title>
+      <language-switch></language-switch>
+    </div>
+
+    <div>{{ t("title") }}</div>
+
+    <grade-list></grade-list>
+  </div>
 </template>
 
 <style scoped>
-.title {
-  color: rgb(100, 200, 255);
-  font-size: 80px;
+.index-body {
+  min-height: 100vh;
+  background-image: linear-gradient(#e6e5f7 30%, #fad0da, #dbc0da);
 }
 
-.title-sillage {
-  color: #183765;
+.title-area {
+  padding-top: 50px;
+  padding-bottom: 30px;
 }
 </style>

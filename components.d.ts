@@ -5,9 +5,17 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./src/pages/index/Index.vue')['default']
+    GradeList: typeof import('./src/components/index/GradeList.vue')['default']
+    LanguageSwitch: typeof import('./src/components/LanguageSwitch.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SillageTitle: typeof import('./src/components/SillageTitle.vue')['default']
+    TabBar: typeof import('./src/components/TabBar.vue')['default']
+    VanButton: typeof import('vant/es')['Button']
+    VanGrid: typeof import('vant/es')['Grid']
+    VanGridItem: typeof import('vant/es')['GridItem']
+    VanTabbar: typeof import('vant/es')['Tabbar']
+    VanTabbarItem: typeof import('vant/es')['TabbarItem']
   }
 }
 

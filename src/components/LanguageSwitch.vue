@@ -1,0 +1,29 @@
+<script setup lang="ts">
+import {useI18n} from "vue-i18n";
+
+const languageDict = {
+  "zh": "简体中文",
+  "en": "English",
+  "fr": "Français"
+}
+
+const {locale, availableLocales} = useI18n()
+</script>
+
+<template>
+  <div class="language-switch">
+    <template v-for="lang in availableLocales" :key="lang">
+      <van-button round
+                  v-if="locale !== lang"
+                  @click="locale=lang"
+                  type="default">{{ languageDict[lang] }}
+      </van-button>
+    </template>
+  </div>
+</template>
+
+<style scoped>
+.language-switch {
+  padding: 10px 0;
+}
+</style>
