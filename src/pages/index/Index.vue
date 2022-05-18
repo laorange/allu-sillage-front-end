@@ -27,7 +27,7 @@ const {t} = useI18n()
 <style scoped>
 .index-body {
   min-height: 100vh;
-  background-image: linear-gradient(#e6e5f7 30%, #fad0da, #dbc0da);
+  background-image: linear-gradient(rgba(100, 200, 250, 30%) 10%, rgba(100, 200, 250, 10%), rgba(100, 200, 250, 30%));
 }
 
 .title-area {

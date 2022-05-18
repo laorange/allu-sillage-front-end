@@ -19,8 +19,8 @@ const gradeNameList = computed(() => JSON.parse(t('gradeNameList')) as string[])
 <template>
   <n-divider :dashed="true">{{ t("FunctionEntranceTitle") }}</n-divider>
 
-  <van-grid :column-num="4" icon-size="50px" :clickable="true">
-    <van-grid-item v-for="num in 2" :key="`function-${num}`"
+  <van-grid :column-num="svgList.length" icon-size="50px" :clickable="true">
+    <van-grid-item v-for="num in svgList.length" :key="`function-${num}`"
                    :icon="svgList[num-1]"
                    :text="gradeNameList[num-1]"/>
   </van-grid>

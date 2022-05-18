@@ -10,11 +10,11 @@ const {t} = useI18n({
     },
     en: {
       'BrowserHistoryTitle': "Browser History",
-      "underConstruction": "under construction",
+      "underConstruction": "this component is under construction...",
     },
     fr: {
       "BrowserHistoryTitle": "Historique du Navigateur",
-      "underConstruction": "En construction",
+      "underConstruction": "ce composant est en construction...",
     },
   }
 });
