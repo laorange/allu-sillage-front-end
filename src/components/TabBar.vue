@@ -22,7 +22,7 @@ const {t} = useI18n({
 })
 </script>
 <template>
-  <van-tabbar v-model="activeIndex">
+  <van-tabbar v-model="activeIndex" :placeholder="true">
     <van-tabbar-item icon="wap-home-o">{{ t("home") }}</van-tabbar-item>
     <van-tabbar-item icon="contact">{{ t("about") }}</van-tabbar-item>
   </van-tabbar>

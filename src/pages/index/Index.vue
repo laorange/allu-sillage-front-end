@@ -5,6 +5,7 @@ import GradeList from "../../components/index/GradeList.vue";
 import SillageTitle from "../../components/SillageTitle.vue";
 import LanguageSwitch from "../../components/LanguageSwitch.vue";
 import FunctionEntrance from "../../components/index/FunctionEntrance.vue";
+import BrowseHistory from "../../components/index/BrowseHistory.vue";
 
 
 const {t} = useI18n()
@@ -19,6 +20,7 @@ const {t} = useI18n()
 
     <grade-list/>
     <function-entrance/>
+    <browse-history/>
   </div>
 </template>
 
