@@ -4,6 +4,7 @@ import {useI18n} from "vue-i18n";
 import GradeList from "../../components/index/GradeList.vue";
 import SillageTitle from "../../components/SillageTitle.vue";
 import LanguageSwitch from "../../components/LanguageSwitch.vue";
+import FunctionEntrance from "../../components/index/FunctionEntrance.vue";
 
 
 const {t} = useI18n()
@@ -16,9 +17,8 @@ const {t} = useI18n()
       <language-switch></language-switch>
     </div>
 
-    <div>{{ t("title") }}</div>
-
-    <grade-list></grade-list>
+    <grade-list/>
+    <function-entrance/>
   </div>
 </template>
 
@@ -30,6 +30,5 @@ const {t} = useI18n()
 
 .title-area {
   padding-top: 50px;
-  padding-bottom: 30px;
 }
 </style>

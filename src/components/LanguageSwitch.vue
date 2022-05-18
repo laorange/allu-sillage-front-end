@@ -5,7 +5,7 @@ const languageDict = {
   "zh": "简体中文",
   "en": "English",
   "fr": "Français"
-}
+};
 
 const {locale, availableLocales} = useI18n()
 </script>
@@ -24,6 +24,6 @@ const {locale, availableLocales} = useI18n()
 
 <style scoped>
 .language-switch {
-  padding: 10px 0;
+
 }
 </style>

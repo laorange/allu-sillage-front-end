@@ -1,7 +1,7 @@
-interface strKeyObj {
-    [key: string]: string | strKeyObj
+interface StrKeyObj {
+    [key: string]: string | StrKeyObj
 }
 
-export interface Language extends strKeyObj{
-    title: string,
+export interface Language extends StrKeyObj{
+
 }

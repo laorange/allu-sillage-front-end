@@ -5,8 +5,11 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BrowseHistory: typeof import('./src/components/index/BrowseHistory.vue')['default']
+    FunctionEntrance: typeof import('./src/components/index/FunctionEntrance.vue')['default']
     GradeList: typeof import('./src/components/index/GradeList.vue')['default']
     LanguageSwitch: typeof import('./src/components/LanguageSwitch.vue')['default']
+    NDivider: typeof import('naive-ui')['NDivider']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SillageTitle: typeof import('./src/components/SillageTitle.vue')['default']
