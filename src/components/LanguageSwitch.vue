@@ -16,7 +16,7 @@ const {locale, availableLocales} = useI18n()
       <van-button round
                   v-if="locale !== lang"
                   @click="locale=lang"
-                  type="default">{{ languageDict[lang] }}
+                  type="success">{{ languageDict[lang] }}
       </van-button>
     </template>
   </div>
