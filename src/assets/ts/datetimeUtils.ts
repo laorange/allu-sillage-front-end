@@ -1,6 +1,5 @@
 import dayjs from "dayjs";
-
-const SECONDS_OF_ONE_WEEK = 604800000;
+import constants from "../constants.json";
 
 export function formatDate(d: dayjs.Dayjs) {
     return d.format("YYYY-MM-DD");
@@ -20,5 +19,5 @@ export function getIsoWeekDay(d: dayjs.Dayjs) {
 }
 
 export function getWeekAmountBetweenTwoDay(from: dayjs.Dayjs = dayjs(), to: dayjs.Dayjs = dayjs()) {
-    return Math.floor(to.diff(from) / SECONDS_OF_ONE_WEEK);
+    return Math.floor(to.diff(from) / constants.SECONDS_OF_ONE_WEEK);
 }
