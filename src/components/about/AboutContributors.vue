@@ -24,9 +24,10 @@ const {t} = useI18n({
 
 <template>
   <van-grid :column-num="3" icon-size="40px">
-    <van-grid-item icon="https://avatars.githubusercontent.com/u/68316902?s=64&v=4" :text="`17-${t('yzc')}`"/>
-    <van-grid-item icon="https://avatars.githubusercontent.com/u/69333241?s=64&v=4" :text="`17-${t('dh')}`"/>
-    <van-grid-item icon="https://avatars.githubusercontent.com/u/73748887?s=64&v=4" :text="`17-${t('zyb')}`"/>
+    <!-- refer https://cloud.tencent.com/developer/article/1987419 -->
+    <van-grid-item icon="https://q.qlogo.cn/g?b=qq&k=f4PA69kRTtvgkgKCA1KfkQ&s=100" :text="`17-${t('yzc')}`"/>
+    <van-grid-item icon="https://q.qlogo.cn/g?b=qq&k=tnhSKwKt6XpicficiawHNcAPw&s=100" :text="`17-${t('dh')}`"/>
+    <van-grid-item icon="https://q.qlogo.cn/g?b=qq&k=Oy8vtaJOpYL5xx5blcUAoA&s=100" :text="`17-${t('zyb')}`"/>
   </van-grid>
 </template>
 
