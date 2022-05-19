@@ -23,14 +23,14 @@ const routes: RouteRecordRaw[] = [
         component: CoursePc,
         name: "course-pc",
         alias: "/course/pc/",
-        beforeEnter(_, from) {
+        beforeEnter(to, from) {
             if (from.name === "course-mobile") {
                 // 如果是从手机端界面跳转过来的，则允许小屏幕设备访问`course-pc`
                 return true;
             }
             if (window.innerWidth <= THRESHOLD_WIDTH_OF_PC) {
                 // 屏幕宽度小于`THRESHOLD_WIDTH_OF_PC`时，跳转到手机端
-                return {name: "course-mobile"};
+                return {name: "course-mobile", query: to.query, params: to.params};
             }
         },
     },
