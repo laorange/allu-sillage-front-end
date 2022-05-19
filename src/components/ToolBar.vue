@@ -22,7 +22,7 @@ const active = computed({
     </template>
     <template #left>
       <div class="one-tool">
-        <van-icon name="setting-o" size="20px"/>
+        <van-icon name="setting-o" color="black" size="20px"/>
         <div class="tool-bar-label">设置信息</div>
       </div>
     </template>

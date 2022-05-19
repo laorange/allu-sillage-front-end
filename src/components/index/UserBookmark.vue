@@ -5,15 +5,15 @@ import {useI18n} from "vue-i18n";
 const {t} = useI18n({
   messages: {
     zh: {
-      'BrowserHistoryTitle': "历史记录",
+      'Bookmarks': "收藏夹",
       "underConstruction": "该组件尚未完成",
     },
     en: {
-      'BrowserHistoryTitle': "Browser History",
+      'Bookmarks': "Bookmarks",
       "underConstruction": "this component is under construction...",
     },
     fr: {
-      "BrowserHistoryTitle": "Historique du Navigateur",
+      "Bookmarks": "Favoris",
       "underConstruction": "ce composant est en construction...",
     },
   }
@@ -24,7 +24,7 @@ const gradeNameList = computed(() => JSON.parse(t('gradeNameList')) as string[])
 </script>
 
 <template>
-  <n-divider :dashed="true">{{ t("BrowserHistoryTitle") }}</n-divider>
+  <n-divider :dashed="true">{{ t("Bookmarks") }}</n-divider>
 
   <div>🚧 {{t('underConstruction')}}</div>
 </template>
