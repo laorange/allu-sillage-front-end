@@ -18,6 +18,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SillageTitle: typeof import('./src/components/SillageTitle.vue')['default']
     TabBar: typeof import('./src/components/TabBar.vue')['default']
+    ToolBar: typeof import('./src/components/ToolBar.vue')['default']
     VanButton: typeof import('vant/es')['Button']
     VanCell: typeof import('vant/es')['Cell']
     VanCellGroup: typeof import('vant/es')['CellGroup']
