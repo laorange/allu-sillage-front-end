@@ -1,7 +1,7 @@
-import {Language} from "../types";
+import {Language} from "../assets/ts/types";
 
 const en: Language = {
-    title: "SIAE Course Manager",
+
 };
 
 export default en;

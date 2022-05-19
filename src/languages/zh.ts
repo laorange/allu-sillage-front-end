@@ -1,7 +1,6 @@
-import {Language} from "../types";
+import {Language} from "../assets/ts/types";
 
 const zh: Language = {
-    title: "SIAE-课程管理系统",
 
 };
 
