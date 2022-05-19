@@ -9,10 +9,10 @@ export interface Language extends StrKeyObj {
 }
 
 export interface ApiData {
-    semesterConfig: SemesterConfig | null;
-    courses: Course[] | null;
-    groups: Group[] | null;
-    notices: Notice[] | null;
-    courseChangeLogs: CourseChangeLog[] | null;
-    classrooms: Classroom[] | null;
+    semesterConfig: SemesterConfig;
+    courses: Course[];
+    groups: Group[];
+    notices: Notice[];
+    courseChangeLogs: CourseChangeLog[];
+    classrooms: Classroom[];
 }

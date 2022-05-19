@@ -14,17 +14,25 @@ export const useStore = defineStore("store", {
         return {
             courseApi: new CourseApi(),
             apiData: {
-                semesterConfig: null,
-                courses: null,
-                groups: null,
-                notices: null,
-                courseChangeLogs: null,
-                classrooms: null,
+                semesterConfig: {
+                    "current_period": 30,
+                    "current_period_display": "2022.02~2022.07",
+                    "week1_monday_date": "2022-02-28 00:00:00",
+                    "max_week": 20,
+                },
+                courses: [],
+                groups: [],
+                notices: [],
+                courseChangeLogs: [],
+                classrooms: [],
             },
         };
     },
     getters: {},
     actions: {
+        transformGradeToSemester(grade: number) {
+            return grade * 2 - this.apiData.semesterConfig.current_period % 2;
+        },
         async updateInfoFromBackend() {
             // 无需排队请求
             // this.apiData.groups = (await this.courseApi.courseApiGroupGet()).data;
