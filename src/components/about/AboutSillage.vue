@@ -6,8 +6,8 @@ import config from "../../../package.json";
 <template>
   <div class="about-sillage">
     <n-space :vertical="true">
-      <img class="logo" src="/svg/sillage.svg" alt="logo"/>
-      <sillage-title font-size="x-large"/>
+      <img class="logo" src="/svg/sillage-logo.svg" alt="logo"/>
+      <sillage-title size="100px"/>
       <div class="version">v{{ config.version }}</div>
     </n-space>
   </div>
