@@ -3,6 +3,7 @@ import {computed} from "vue";
 import {useI18n} from "vue-i18n";
 import {useRouter} from "vue-router";
 import {useStore} from "../../store/store";
+import constants from "../../assets/constants.json";
 
 const router = useRouter();
 const store = useStore();
@@ -26,17 +27,18 @@ const {t} = useI18n({
 
 const gradeNameList = computed(() => JSON.parse(t("gradeNameList")) as string[]);
 
+const maxColumnNum = window.innerWidth < constants.THRESHOLD_WIDTH_OF_PC ? 4 : 8;
 </script>
 
 <template>
   <n-divider :dashed="true">{{ t("GradeListTitle") }}</n-divider>
 
-  <van-grid :column-num="4" icon-size="50px" :clickable="true">
+  <van-grid :column-num="maxColumnNum" icon-size="50px" :clickable="true">
     <van-grid-item v-for="grade in 7" :key="`grade-list-${grade}`"
                    :icon="`./svg/timetable${grade}.svg`"
                    @click="router.push({name: 'course-pc', query:{semester: store.transformGradeToSemester(grade)}})"
                    :text="gradeNameList[grade-1]"/>
-    <van-grid-item :icon="`./svg/timetable8.svg`"
+    <van-grid-item :icon="`./svg/searchWithFilter.svg`"
                    :text="gradeNameList[7]"/>
   </van-grid>
 </template>

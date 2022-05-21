@@ -1,21 +1,15 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ fontSize?: string; }>(), {fontSize: "xxx-large"});
+withDefaults(defineProps<{ size?: string; }>(), {size: "200px"});
 </script>
 
 <template>
-  <div class="title" :style="{fontSize: fontSize}">
-    <span class="title-sillage">Si</span>ll<span class="title-sillage">a</span>g<span class="title-sillage">e</span>
+  <div class="title">
+    <img src="/svg/sillage-title.svg" alt="sillage-title.svg" :style="{width: size}">
   </div>
 </template>
 
 <style scoped>
 .title {
-  font-family: "Consolas", serif;
-  font-weight: bolder;
-  color: #183765;
-}
 
-.title-sillage {
-  color: black;
 }
 </style>

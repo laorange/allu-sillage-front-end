@@ -13,7 +13,7 @@ const {locale, availableLocales} = useI18n()
 <template>
   <div class="language-switch">
     <template v-for="lang in availableLocales" :key="lang">
-      <van-button round
+      <van-button size="small"
                   v-if="locale !== lang"
                   @click="locale=lang"
                   type="success">{{ languageDict[lang] }}
@@ -25,5 +25,9 @@ const {locale, availableLocales} = useI18n()
 <style scoped>
 .language-switch {
 
+}
+
+button+button {
+  margin-left: 20px;
 }
 </style>

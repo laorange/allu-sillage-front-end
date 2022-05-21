@@ -5,7 +5,7 @@ import GradeList from "../../components/index/GradeList.vue";
 import SillageTitle from "../../components/SillageTitle.vue";
 import LanguageSwitch from "../../components/LanguageSwitch.vue";
 import FunctionEntrance from "../../components/index/FunctionEntrance.vue";
-import BrowseHistory from "../../components/index/BrowseHistory.vue";
+import BrowseHistory from "../../components/index/UserBookmark.vue";
 
 
 const {t} = useI18n()
@@ -14,7 +14,7 @@ const {t} = useI18n()
 <template>
   <div class="index-body">
     <div class="title-area">
-      <sillage-title></sillage-title>
+      <sillage-title size="150px"></sillage-title>
       <language-switch></language-switch>
     </div>
 

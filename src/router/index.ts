@@ -4,7 +4,9 @@ import About from "../pages/about/About.vue";
 import CourseMobile from "../pages/course/mobile/CourseMobile.vue";
 import CoursePc from "../pages/course/pc/CoursePc.vue";
 
-const THRESHOLD_WIDTH_OF_PC = 750;
+import constants from "../assets/constants.json";
+
+const THRESHOLD_WIDTH_OF_PC = constants.THRESHOLD_WIDTH_OF_PC;
 
 const routes: RouteRecordRaw[] = [
     {
