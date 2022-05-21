@@ -10,9 +10,11 @@ declare module '@vue/runtime-core' {
     AboutSillage: typeof import('./src/components/about/AboutSillage.vue')['default']
     FunctionEntrance: typeof import('./src/components/index/FunctionEntrance.vue')['default']
     GradeList: typeof import('./src/components/index/GradeList.vue')['default']
+    GrayLine: typeof import('./src/components/Course/pc/GrayLine.vue')['default']
     LanguageSwitch: typeof import('./src/components/LanguageSwitch.vue')['default']
     NDivider: typeof import('naive-ui')['NDivider']
     NSpace: typeof import('naive-ui')['NSpace']
+    PcCourseTitle: typeof import('./src/components/Course/pc/PcCourseTitle.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SillageTitle: typeof import('./src/components/SillageTitle.vue')['default']
@@ -28,6 +30,7 @@ declare module '@vue/runtime-core' {
     VanNavBar: typeof import('vant/es')['NavBar']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
+    WhiteLine: typeof import('./src/components/Course/pc/WhiteLine.vue')['default']
   }
 }
 

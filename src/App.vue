@@ -3,11 +3,11 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
 import TabBar from "./components/TabBar.vue";
-import {onMounted} from "vue";
+import {onBeforeMount} from "vue";
 import {useStore} from "./store/store";
 
 const store = useStore();
-onMounted(() => store.updateInfoFromBackend());
+onBeforeMount(() => store.updateInfoFromBackend());
 </script>
 
 <template>
