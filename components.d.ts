@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     LanguageSwitch: typeof import('./src/components/LanguageSwitch.vue')['default']
     NDivider: typeof import('naive-ui')['NDivider']
     NSpace: typeof import('naive-ui')['NSpace']
+    PcCourseTitle: typeof import('./src/components/Course/PcCourseTitle.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SillageTitle: typeof import('./src/components/SillageTitle.vue')['default']
