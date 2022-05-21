@@ -13,7 +13,6 @@ type State = {
         groups: number[]
         teacherName: string
         method: string
-        week: number
         whatDay: number
     }
 }
@@ -41,33 +40,68 @@ export const useStore = defineStore("store", {
                 groups: [],
                 teacherName: "",
                 method: "",
-                week: -1,
                 whatDay: getIsoWeekDay(dayjs()),
             },
         };
     },
-    getters: {},
+    getters: {
+        /**
+         * @summary 当前学期戳
+         */
+        current_period(): number {
+            return this.apiData.semesterConfig.current_period;
+        },
+
+        /**
+         * @summary 第一周周一的日期
+         */
+        week1_monday_date(): dayjs.Dayjs {
+            return dayjs(this.apiData.semesterConfig.week1_monday_date);
+        },
+
+        /**
+         * @summary 本学期的最大周数
+         */
+        max_week(): number {
+            return this.apiData.semesterConfig.max_week;
+        },
+
+        /**
+         * @summary 学期戳的解释性文字
+         */
+        current_period_display(): string {
+            return this.apiData.semesterConfig.current_period_display ?? "";
+        },
+    },
     actions: {
-        transformGradeToSemester(grade: number) {
+        /**
+         * 获取某周的周一日期
+         * @param week 第?周
+         * */
+        getMondayDateOfSomeWeek(week: number): dayjs.Dayjs {
+            return this.week1_monday_date.add(week - 1, "week");
+        },
+
+        /**
+         * 获取某一天是这学期的第几周
+         * @param date 某一天
+         */
+        getWeekNumOfSomeDay(date: dayjs.Dayjs = dayjs()): number {
+            return getWeekAmountBetweenTwoDay(dayjs(this.apiData.semesterConfig.week1_monday_date), date) + 1;
+        },
+
+        /**
+         * grade ∈ [1,7] 转换为 semester ∈ [1,14]
+         * @param grade 第几年级
+         */
+        getSemesterOfGrade(grade: number) {
             return grade * 2 - this.apiData.semesterConfig.current_period % 2;
         },
-        initializeState() {
-            let weekNum = getWeekAmountBetweenTwoDay(dayjs(this.apiData.semesterConfig.week1_monday_date), dayjs()) + 1;
-            if (weekNum > this.apiData.semesterConfig.max_week) {
-                weekNum = this.apiData.semesterConfig.max_week;
-            }
-            if (weekNum <= 0) {
-                weekNum = 1;
-            }
-            this.filterOptions.week = weekNum;
-        },
-        async updateInfoFromBackend() {
-            // 无需排队请求
-            // this.apiData.groups = (await this.courseApi.courseApiGroupGet()).data;
-            // this.apiData.notices = (await this.courseApi.courseApiNoticeGet()).data;
-            // this.apiData.courseChangeLogs = (await this.courseApi.courseApiCourseChangeLogGet()).data;
-            // this.apiData.classrooms = (await this.courseApi.courseApiClassroomGet()).data;
 
+        /**
+         * 从后台获取数据，并存入 this.apiData
+         */
+        async updateInfoFromBackend() {
             let dateThreeDaysAgo = formatDate(dayjs().add(-3, "day"));
 
             this.courseApi.courseApiGroupGet().then(
@@ -92,8 +126,6 @@ export const useStore = defineStore("store", {
             );
             this.apiData.semesterConfig = (await this.courseApi.courseApiSemesterConfigGet()).data;
             this.apiData.courses = (await this.courseApi.courseApiCourseGet(`${this.apiData.semesterConfig.current_period}`)).data;
-
-            this.initializeState();
         },
     },
 });

@@ -36,7 +36,7 @@ const maxColumnNum = window.innerWidth < constants.THRESHOLD_WIDTH_OF_PC ? 4 : 8
   <van-grid :column-num="maxColumnNum" icon-size="50px" :clickable="true">
     <van-grid-item v-for="grade in 7" :key="`grade-list-${grade}`"
                    :icon="`./svg/timetable${grade}.svg`"
-                   @click="router.push({name: 'course-pc', query:{semester: store.transformGradeToSemester(grade)}})"
+                   @click="router.push({name: 'course-pc', query:{semester: store.getSemesterOfGrade(grade)}})"
                    :text="gradeNameList[grade-1]"/>
     <van-grid-item :icon="`./svg/searchWithFilter.svg`"
                    :text="gradeNameList[7]"/>
