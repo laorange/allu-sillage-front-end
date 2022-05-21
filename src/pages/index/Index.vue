@@ -14,7 +14,7 @@ const {t} = useI18n()
 <template>
   <div class="index-body">
     <div class="title-area">
-      <sillage-title></sillage-title>
+      <sillage-title size="150px"></sillage-title>
       <language-switch></language-switch>
     </div>
 
