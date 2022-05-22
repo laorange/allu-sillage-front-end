@@ -36,6 +36,10 @@ function editBookmark(newBookmark: UserBookmark) {
   showEditDialog.value = true;
 }
 
+function deleteBookmark(targetBookmark: UserBookmark) {
+  store.bookmarks = store.bookmarks.filter(bm => bm.path !== targetBookmark.path);
+}
+
 function onAliasInputBlur() {
   if (editingBookmark.value.alias.length === 0) {
     editingBookmark.value.alias = editingBookmark.value.path;
@@ -69,12 +73,13 @@ function redirectWithRouter(path: string) {
                 :title-style="{textAlign: 'left'}">
         <template #title>
           <n-ellipsis expand-trigger="click" line-clamp="1" :tooltip="false">
-            {{bookmark.alias}}
+            {{ bookmark.alias }}
           </n-ellipsis>
         </template>
         <template #right-icon>
           <van-button icon="guide-o" type="success" size="small" @click="redirectWithRouter(bookmark.path)"></van-button>
           <van-button icon="edit" type="primary" size="small" @click="editBookmark(bookmark)"></van-button>
+          <van-button icon="delete-o" type="danger" size="small" @click="deleteBookmark(bookmark)"></van-button>
         </template>
       </van-cell>
     </div>
