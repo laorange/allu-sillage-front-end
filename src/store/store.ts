@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {formatDate, getIsoWeekDay, getWeekAmountBetweenTwoDay} from "../assets/ts/datetimeUtils";
 import {CourseApi} from "../assets/ts/api";
-import {ApiData, Bookmark} from "../assets/ts/types";
+import {ApiData, UserBookmark} from "../assets/ts/types";
 import dayjs from "dayjs";
 
 type State = {
@@ -15,7 +15,7 @@ type State = {
         method: string
         whatDay: number
     },
-    bookmarks: Bookmark[]
+    bookmarks: UserBookmark[]
 }
 
 export const useStore = defineStore("store", {

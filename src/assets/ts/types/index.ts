@@ -10,7 +10,7 @@ export interface Language extends StrKeyObj {
 
 export type LanguageOptions = "zh" | "en" | "fr"
 
-export interface Bookmark {
+export interface UserBookmark {
     path: string;
     alias: string;
 }

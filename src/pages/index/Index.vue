@@ -5,10 +5,11 @@ import GradeList from "../../components/index/GradeList.vue";
 import SillageTitle from "../../components/SillageTitle.vue";
 import LanguageSwitch from "../../components/LanguageSwitch.vue";
 import FunctionEntrance from "../../components/index/FunctionEntrance.vue";
-import BrowseHistory from "../../components/index/UserBookmark.vue";
+import BookmarkArea from "../../components/index/UserBookmarkArea.vue";
+import {useStore} from "../../store/store";
 
-
-const {t} = useI18n()
+const {t} = useI18n();
+const store = useStore();
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const {t} = useI18n()
 
     <grade-list/>
     <function-entrance/>
-    <browse-history/>
+    <bookmark-area v-show="store.bookmarks.length>0"/>
   </div>
 </template>
 

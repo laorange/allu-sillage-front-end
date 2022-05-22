@@ -7,7 +7,7 @@ import {onBeforeMount, watch} from "vue";
 import {useStore} from "./store/store";
 import {useStorage} from "vue3-storage";
 import {useI18n} from "vue-i18n";
-import {Bookmark, LanguageOptions} from "./assets/ts/types";
+import {UserBookmark, LanguageOptions} from "./assets/ts/types";
 
 const store = useStore();
 const storage = useStorage();
@@ -22,7 +22,7 @@ function loadDataFromLocalstorage() {
 
   storage.getStorage({
     key: "bookmarks",
-    success: result => (store.bookmarks = JSON.parse(result.data ?? "[]") as Bookmark[]),
+    success: result => (store.bookmarks = JSON.parse(result.data ?? "[]") as UserBookmark[]),
   }).catch(() => undefined);
 }
 
@@ -41,7 +41,6 @@ watch(() => store.bookmarks, async (newBookmarks) => {
 
 /** 监听 locale.value 的变化，并记录于 localstorage */
 watch(() => locale.value, async (newLocale) => {
-  console.log("更新language");
   await storage.setStorage({
     key: "language",
     data: newLocale,
@@ -63,9 +62,11 @@ watch(() => locale.value, async (newLocale) => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  --van-cell-background-color: transparent;
 }
 
 .van-grid-item__content {
   background-color: transparent !important;
 }
+
 </style>
