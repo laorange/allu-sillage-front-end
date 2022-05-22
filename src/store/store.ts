@@ -14,7 +14,8 @@ type State = {
         teacherName: string
         method: string
         whatDay: number
-    }
+    },
+    bookmarks: string[]
 }
 
 export const useStore = defineStore("store", {
@@ -42,6 +43,7 @@ export const useStore = defineStore("store", {
                 method: "",
                 whatDay: getIsoWeekDay(dayjs()),
             },
+            bookmarks: [],
         };
     },
     getters: {

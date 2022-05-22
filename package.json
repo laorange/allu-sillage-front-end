@@ -20,7 +20,8 @@
     "vant": "^3.4.9",
     "vue": "^3.2.25",
     "vue-i18n": "9",
-    "vue-router": "^4.0.15"
+    "vue-router": "^4.0.15",
+    "vue3-storage": "^0.1.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",

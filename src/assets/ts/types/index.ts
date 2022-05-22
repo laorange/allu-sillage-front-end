@@ -8,6 +8,8 @@ export interface Language extends StrKeyObj {
 
 }
 
+export type LanguageOptions = "zh" | "en" | "fr"
+
 export interface ApiData {
     semesterConfig: SemesterConfig;
     courses: Course[];
