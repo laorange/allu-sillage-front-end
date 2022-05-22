@@ -5,28 +5,57 @@ import constants from "../../assets/constants.json";
 
 const {t} = useI18n({
   messages: {
-    zh: {"gradeNameList": JSON.stringify(["空闲教室", "考试列表"]), "FunctionEntranceTitle": "拓展功能"},
-    en: {"gradeNameList": JSON.stringify(["Classrooms", "Exams"]), "FunctionEntranceTitle": "Extensions"},
-    fr: {"gradeNameList": JSON.stringify(["Salles de classe", "Examens"]), "FunctionEntranceTitle": "Extensions"},
+    zh: {
+      FunctionEntranceTitle: "拓展功能",
+      classrooms: "空闲教室",
+      exams: "考试列表",
+    },
+    en: {
+      FunctionEntranceTitle: "Extensions",
+      classrooms: "Classrooms",
+      exams: "Exams",
+    },
+    fr: {
+      FunctionEntranceTitle: "Extensions",
+      classrooms: "Salles de classe",
+      exams: "Examens",
+    },
   },
 });
 
-const svgList = ["./svg/classroom.svg", "./svg/exam.svg"];
 
-const gradeNameList = computed(() => JSON.parse(t("gradeNameList")) as string[]);
+interface Entrance {
+  text: string;
+  icon: string;
+  trigger?: () => any;
+}
+
+const entrances: Entrance[] = [
+  {
+    text: t("classrooms"),
+    icon: "./svg/classroom.svg",
+    trigger: () => window.open("http://new.siae.top/#/classroom"),
+  },
+  {
+    text: t("exams"),
+    icon: "./svg/exam.svg",
+    trigger: () => window.open("http://new.siae.top/#/exam"),
+  },
+];
 
 const maxColumnNum = window.innerWidth < constants.THRESHOLD_WIDTH_OF_PC ? 4 : 8;
 
-const columnNum = computed(() => svgList.length < maxColumnNum ? svgList.length : maxColumnNum);
+const columnNum = computed(() => entrances.length < maxColumnNum ? entrances.length : maxColumnNum);
 </script>
 
 <template>
   <n-divider :dashed="true">{{ t("FunctionEntranceTitle") }}</n-divider>
 
   <van-grid :column-num="columnNum" icon-size="50px" :clickable="true">
-    <van-grid-item v-for="num in svgList.length" :key="`function-${num}`"
-                   :icon="svgList[num-1]"
-                   :text="gradeNameList[num-1]"/>
+    <van-grid-item v-for="(entrance, index) in entrances" :key="`function-${index}`"
+                   :icon="entrance.icon"
+                   :text="entrance.text"
+                   @click="entrance.trigger"/>
   </van-grid>
 </template>
 
