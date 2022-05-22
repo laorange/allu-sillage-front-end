@@ -1,22 +1,31 @@
 <script setup lang="ts">
 import {computed} from "vue";
+import {useStore} from "../store/store";
+import {useRoute} from "vue-router";
 
-const props = withDefaults(defineProps<{ whetherBookmark: boolean; activateColor?: string }>(),
-    {activateColor: "red"});
-const emits = defineEmits(["update:whetherBookmark"]);
+const store = useStore();
+const route = useRoute();
 
-const active = computed({
-  get: () => props.whetherBookmark,
-  set: (newValue) => emits("update:whetherBookmark", newValue),
+withDefaults(defineProps<{ activateColor?: string }>(), {activateColor: "red"});
+
+const isBookmark = computed<boolean>({
+  get: () => store.bookmarks.indexOf(route.fullPath) > -1,
+  set: (newValue) => {
+    if (newValue) {
+      store.bookmarks.push(route.fullPath);
+    } else {
+      store.bookmarks = store.bookmarks.filter(bm => (bm !== route.fullPath));
+    }
+  },
 });
 </script>
 
 <template>
   <van-nav-bar>
     <template #right>
-      <div class="one-tool" @click="active = !active">
-        <van-icon name="star-o" size="20px" :color="active ? activateColor : 'black'"/>
-        <div class="tool-bar-label" v-if="active" :style="{color: activateColor}">已收藏</div>
+      <div class="one-tool" @click="isBookmark = !isBookmark">
+        <van-icon name="star-o" size="20px" :color="isBookmark ? activateColor : 'black'"/>
+        <div class="tool-bar-label" v-if="isBookmark" :style="{color: activateColor}">已收藏</div>
         <div class="tool-bar-label" v-else>收藏本页</div>
       </div>
     </template>
@@ -30,14 +39,6 @@ const active = computed({
 </template>
 
 <style scoped>
-.tool-bar {
-  display: flex;
-  justify-content: space-around;
-  justify-items: center;
-  align-items: center;
-  align-content: center;
-}
-
 .one-tool {
   display: flex;
 }
