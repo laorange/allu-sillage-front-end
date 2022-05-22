@@ -8,13 +8,15 @@ const route = useRoute();
 
 withDefaults(defineProps<{ activateColor?: string }>(), {activateColor: "red"});
 
+const bookmarkPaths = computed(() => store.bookmarks.map(bm => bm.path));
+
 const isBookmark = computed<boolean>({
-  get: () => store.bookmarks.indexOf(route.fullPath) > -1,
+  get: () => bookmarkPaths.value.indexOf(route.fullPath) > -1,
   set: (newValue) => {
     if (newValue) {
-      store.bookmarks.push(route.fullPath);
+      store.bookmarks.push({path: route.fullPath, alias: route.fullPath});
     } else {
-      store.bookmarks = store.bookmarks.filter(bm => (bm !== route.fullPath));
+      store.bookmarks = store.bookmarks.filter(bm => (bm.path !== route.fullPath));
     }
   },
 });

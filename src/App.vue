@@ -7,7 +7,7 @@ import {onBeforeMount, watch} from "vue";
 import {useStore} from "./store/store";
 import {useStorage} from "vue3-storage";
 import {useI18n} from "vue-i18n";
-import {LanguageOptions} from "./assets/ts/types";
+import {Bookmark, LanguageOptions} from "./assets/ts/types";
 
 const store = useStore();
 const storage = useStorage();
@@ -22,7 +22,7 @@ function loadDataFromLocalstorage() {
 
   storage.getStorage({
     key: "bookmarks",
-    success: result => (store.bookmarks = JSON.parse(result.data ?? "[]") as string[]),
+    success: result => (store.bookmarks = JSON.parse(result.data ?? "[]") as Bookmark[]),
   }).catch(() => undefined);
 }
 
