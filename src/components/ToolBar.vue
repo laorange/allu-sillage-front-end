@@ -2,9 +2,29 @@
 import {computed} from "vue";
 import {useStore} from "../store/store";
 import {useRoute} from "vue-router";
+import {useI18n} from "vue-i18n";
 
 const store = useStore();
 const route = useRoute();
+const {t} = useI18n({
+  messages: {
+    zh: {
+      star: "收藏本页",
+      stared: "已收藏",
+      setFilter: "设置信息",
+    },
+    en: {
+      star: "Star",
+      stared: "Stared",
+      setFilter: "Filter options",
+    },
+    fr: {
+      star: "Marquer",
+      stared: "Marqué",
+      setFilter: "Options du filtre ",
+    },
+  },
+});
 
 withDefaults(defineProps<{ activateColor?: string }>(), {activateColor: "red"});
 
@@ -27,14 +47,14 @@ const isBookmark = computed<boolean>({
     <template #right>
       <div class="one-tool" @click="isBookmark = !isBookmark">
         <van-icon name="star-o" size="20px" :color="isBookmark ? activateColor : 'black'"/>
-        <div class="tool-bar-label" v-if="isBookmark" :style="{color: activateColor}">已收藏</div>
-        <div class="tool-bar-label" v-else>收藏本页</div>
+        <div class="tool-bar-label" v-if="isBookmark" :style="{color: activateColor}">{{ t("stared") }}</div>
+        <div class="tool-bar-label" v-else>{{ t("star") }}</div>
       </div>
     </template>
     <template #left>
       <div class="one-tool">
         <van-icon name="setting-o" color="black" size="20px"/>
-        <div class="tool-bar-label">设置信息</div>
+        <div class="tool-bar-label">{{ t("setFilter") }}</div>
       </div>
     </template>
   </van-nav-bar>
