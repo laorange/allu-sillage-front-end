@@ -27,6 +27,7 @@ declare module '@vue/runtime-core' {
     TabBar: typeof import('./src/components/TabBar.vue')['default']
     ToolBar: typeof import('./src/components/ToolBar.vue')['default']
     UserBookmarkArea: typeof import('./src/components/index/UserBookmarkArea.vue')['default']
+    UserBookmarkEditDialog: typeof import('./src/components/index/UserBookmarkEditDialog.vue')['default']
     VanButton: typeof import('vant/es')['Button']
     VanCell: typeof import('vant/es')['Cell']
     VanCellGroup: typeof import('vant/es')['CellGroup']
