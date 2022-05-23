@@ -3,16 +3,20 @@ import {useRoute} from "vue-router";
 import TopToolBar from "../../../components/TopToolBar.vue";
 import {useStore} from "../../../store/store";
 import CourseBox from "../../../components/course/CourseBox.vue";
+import WeekTab from "../../../components/course/WeekTab.vue";
+import {ref} from "vue";
 
 const route = useRoute();
 const store = useStore();
 
 const semester = route.query.semester ?? -1;
 
+const week = ref(1);
 </script>
 
 <template>
   <top-tool-bar/>
+  <week-tab v-model:week="week" :max-week="store.max_week"/>
   <h1>course-mobile</h1>
   <h2>semester = {{ semester }}</h2>
   <course-box :courses="[]"/>

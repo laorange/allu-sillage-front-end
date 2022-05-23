@@ -42,8 +42,11 @@ declare module '@vue/runtime-core' {
     VanGridItem: typeof import('vant/es')['GridItem']
     VanIcon: typeof import('vant/es')['Icon']
     VanNavBar: typeof import('vant/es')['NavBar']
+    VanTab: typeof import('vant/es')['Tab']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
+    VanTabs: typeof import('vant/es')['Tabs']
+    WeekTab: typeof import('./src/components/course/WeekTab.vue')['default']
     WhiteLine: typeof import('./src/components/course/pc/WhiteLine.vue')['default']
   }
 }
