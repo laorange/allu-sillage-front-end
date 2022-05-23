@@ -12,17 +12,14 @@ const {t} = useI18n({
     zh: {
       star: "收藏本页",
       stared: "已收藏",
-      setFilter: "设置信息",
     },
     en: {
       star: "Star",
       stared: "Stared",
-      setFilter: "Filter options",
     },
     fr: {
       star: "Marquer",
       stared: "Marqué",
-      setFilter: "Options du filtre ",
     },
   },
 });
@@ -50,30 +47,20 @@ const showEditDialog = ref(false);
   <div class="tool-bar">
     <user-bookmark-edit-dialog v-model:show="showEditDialog" v-model:bookmark="store.bookmarks[store.bookmarks.length-1]"/>
 
-    <van-nav-bar>
-      <template #right>
-        <div class="one-tool" @click="isBookmark = !isBookmark">
-          <van-icon name="star-o" size="20px" :color="isBookmark ? activateColor : 'black'"/>
-          <div class="tool-bar-label" v-if="isBookmark" :style="{color: activateColor}">{{ t("stared") }}</div>
-          <div class="tool-bar-label" v-else>{{ t("star") }}</div>
-        </div>
-      </template>
-      <template #left>
-        <div class="one-tool">
-          <van-icon name="setting-o" color="black" size="20px"/>
-          <div class="tool-bar-label">{{ t("setFilter") }}</div>
-        </div>
-      </template>
-    </van-nav-bar>
+    <div class="set-bookmark-area" @click="isBookmark = !isBookmark">
+      <van-icon name="star-o" size="20px" :color="isBookmark ? activateColor : 'black'"/>
+      <div class="set-bookmark-area-text" v-if="isBookmark" :style="{color: activateColor}">{{ t("stared") }}</div>
+      <div class="set-bookmark-area-text" v-else>{{ t("star") }}</div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.one-tool {
+.set-bookmark-area {
   display: flex;
 }
 
-.tool-bar-label {
+.set-bookmark-area-text {
   padding-left: 4px;
   font-size: 16px;
 }

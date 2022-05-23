@@ -54,115 +54,115 @@ export interface Course {
     /**
      * 主码
      * @type {number}
-     * @memberof Course
+     * @memberof course
      */
     course_id: number;
     /**
      * FK-CoursePlan
      * @type {number}
-     * @memberof Course
+     * @memberof course
      */
     plan: number;
     /**
      * FK-Classroom
      * @type {number}
-     * @memberof Course
+     * @memberof course
      */
     room: number | null;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     date: string;
     /**
      *
      * @type {number}
-     * @memberof Course
+     * @memberof course
      */
     which_lesson: number;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     note?: string | null;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     update_time?: string;
     /**
      * 例如：#FFFFFF
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     color?: string;
     /**
      * 从2007.9算起的第?学期
      * @type {number}
-     * @memberof Course
+     * @memberof course
      */
     period?: number;
     /**
      * 从大一上算起的第?学期 ∈ [1,14]
      * @type {number}
-     * @memberof Course
+     * @memberof course
      */
     semester?: number;
     /**
      * 如CS21,ES22
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     code?: string | null;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     ch_name?: string;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     en_name?: string | null;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     fr_name?: string | null;
     /**
-     * Course/TD/TP/Exam
+     * course/TD/TP/Exam
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     method?: string;
     /**
      * 多对多，分组的id列表，但是字符串
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     group_ids?: string | null;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     groups_name?: string | null;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     teacher_name?: string | null;
     /**
      *
      * @type {string}
-     * @memberof Course
+     * @memberof course
      */
     room_name?: string | null;
 }
@@ -246,7 +246,7 @@ export interface CourseChangeLog {
      */
     fr_name?: string | null;
     /**
-     * Course/TD/TP/Exam
+     * course/TD/TP/Exam
      * @type {string}
      * @memberof CourseChangeLog
      */
@@ -461,7 +461,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary 排课记录
          * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
          * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-         * @param {string} [method] Course/TD/TP/Exam
+         * @param {string} [method] course/TD/TP/Exam
          * @param {string} [date] 这节课的上课日期
          * @param {string} [week] 本学期的第?周
          * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
@@ -676,7 +676,7 @@ export const CourseApiFp = function (configuration?: Configuration) {
          * @summary 排课记录
          * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
          * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-         * @param {string} [method] Course/TD/TP/Exam
+         * @param {string} [method] course/TD/TP/Exam
          * @param {string} [date] 这节课的上课日期
          * @param {string} [week] 本学期的第?周
          * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
@@ -767,7 +767,7 @@ export interface CourseApiInterface {
      * @summary 排课记录
      * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
      * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-     * @param {string} [method] Course/TD/TP/Exam
+     * @param {string} [method] course/TD/TP/Exam
      * @param {string} [date] 这节课的上课日期
      * @param {string} [week] 本学期的第?周
      * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
@@ -846,7 +846,7 @@ export class CourseApi extends BaseAPI implements CourseApiInterface {
      * @summary 排课记录
      * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
      * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-     * @param {string} [method] Course/TD/TP/Exam
+     * @param {string} [method] course/TD/TP/Exam
      * @param {string} [date] 这节课的上课日期
      * @param {string} [week] 本学期的第?周
      * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7

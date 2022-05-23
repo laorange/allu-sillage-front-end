@@ -16,7 +16,7 @@ const {t} = useI18n({
     },
     en: {
       "gradeNameList": JSON.stringify(["Grade 1", "Grade 2", "Grade 3", "Grade 4", "Master 1", "Master 2", "Master 3", "Others"]),
-      "GradeListTitle": "SIAE Course Manager",
+      "GradeListTitle": "SIAE course Manager",
     },
     fr: {
       "gradeNameList": JSON.stringify(["Année 1", "Année 2", "Année 3", "Année 4", "Année 5", "Année 6", "Année 7", "Les autres"]),

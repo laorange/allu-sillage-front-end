@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {Course} from "../assets/ts/api";
+import {Course} from "../../assets/ts/api";
 import CourseCard from "./CourseCard.vue";
 import {useI18n} from "vue-i18n";
 

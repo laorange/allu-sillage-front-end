@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {Course} from "../assets/ts/api";
+import {Course} from "../../assets/ts/api";
 import {useI18n} from "vue-i18n";
 import {computed} from "vue";
 import dayjs from "dayjs";
-import {formatDate} from "../assets/ts/datetimeUtils";
+import {formatDate} from "../../assets/ts/datetimeUtils";
 
 const props = withDefaults(defineProps<{ course: Course, displayDate?: boolean; }>(), {displayDate: false});
 const {t, locale} = useI18n({
@@ -36,7 +36,7 @@ const {t, locale} = useI18n({
 });
 
 const courseName = computed<string>(() => {
-  let chName = props.course.ch_name ?? "Unknown Course";
+  let chName = props.course.ch_name ?? "Unknown course";
   switch (locale.value) {
     case "en":
       // 优先级: en > fr > ch
