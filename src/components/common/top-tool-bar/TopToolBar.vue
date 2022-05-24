@@ -1,7 +1,16 @@
 <script setup lang="ts">
+import {useStore} from "../../../store/store";
+import {provide} from "vue";
+
 import SetBookmarkButton from "./bookmark/SetBookmarkButton.vue";
 import FilterConfig from "./filter-config/FilterConfig.vue";
+import {Classroom, Group} from "../../../assets/ts/api";
 
+const store = useStore();
+
+provide<number>("period", store.current_period);
+provide<Group[]>("groups", store.apiData.groups);
+provide<Classroom[]>("classrooms", store.apiData.classrooms);
 </script>
 
 <template>

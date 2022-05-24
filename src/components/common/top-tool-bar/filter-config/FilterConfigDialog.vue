@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, ref} from "vue";
+import {computed, inject, ref} from "vue";
 import GroupPicker from "../../user-input/GroupPicker.vue";
 import {Group} from "../../../../assets/ts/api";
 import TrilingualButtonGroup from "../../languages/TrilingualButtonGroup.vue";
@@ -31,7 +31,7 @@ const groupArray = ref<Group[]>([]);
         <trilingual-button-group :on-confirm="handlers.confirm" :on-cancel="handlers.closeDialog"/>
       </template>
 
-      <group-picker v-model:group-array="groupArray"/>
+      <group-picker v-model:group-array="groupArray" :candidates="inject('groups')" :period="inject('period')"/>
 
     </n-drawer-content>
   </n-drawer>
