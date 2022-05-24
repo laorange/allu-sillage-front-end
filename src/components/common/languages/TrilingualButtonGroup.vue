@@ -29,8 +29,8 @@ const {t} = useI18n({
 
 <template>
   <n-space>
-    <van-button type="success" @click="onConfirm()" :size="size" v-if="needConfirm" :disabled="disableConfirm">{{ t("confirm") }}</van-button>
-    <van-button type="warning" @click="onCancel()" :size="size" v-if="needCancel" :disabled="disableCancel">{{ t("cancel") }}</van-button>
+    <van-button type="success" secondary @click="onConfirm()" :size="size" v-if="needConfirm" :disabled="disableConfirm">{{ t("confirm") }}</van-button>
+    <van-button type="warning" secondary @click="onCancel()" :size="size" v-if="needCancel" :disabled="disableCancel">{{ t("cancel") }}</van-button>
   </n-space>
 </template>
 
