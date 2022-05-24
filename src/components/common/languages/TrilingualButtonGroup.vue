@@ -3,10 +3,11 @@ import {useI18n} from "vue-i18n";
 
 withDefaults(defineProps<{
       onConfirm: () => any, onCancel: () => any,
-      needConfirm?: boolean, needCancel?: boolean;
+      needConfirm?: boolean, needCancel?: boolean,
+      disableConfirm?: boolean, disableCancel?: boolean,
       size?: "tiny" | "small" | "medium" | "large"
     }>(),
-    {needConfirm: true, needCancel: true, size: "small"});
+    {needConfirm: true, needCancel: true, size: "small", disableConfirm: false, disableCancel: false});
 
 const {t} = useI18n({
   messages: {
@@ -28,8 +29,8 @@ const {t} = useI18n({
 
 <template>
   <n-space>
-    <van-button type="success" @click="onConfirm()" :size="size" v-if="needConfirm">{{ t("confirm") }}</van-button>
-    <van-button type="warning" @click="onCancel()" :size="size" v-if="needCancel">{{ t("cancel") }}</van-button>
+    <van-button type="success" @click="onConfirm()" :size="size" v-if="needConfirm" :disabled="disableConfirm">{{ t("confirm") }}</van-button>
+    <van-button type="warning" @click="onCancel()" :size="size" v-if="needCancel" :disabled="disableCancel">{{ t("cancel") }}</van-button>
   </n-space>
 </template>
 

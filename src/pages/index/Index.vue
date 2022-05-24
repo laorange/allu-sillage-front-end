@@ -5,7 +5,7 @@ import GradeList from "../../components/index/GradeList.vue";
 import SillageTitle from "../../components/common/SillageTitle.vue";
 import LanguageSwitch from "../../components/index/LanguageSwitch.vue";
 import FunctionEntrance from "../../components/index/FunctionEntrance.vue";
-import BookmarkArea from "../../components/common/top-tool-bar/bookmark/UserBookmarkArea.vue";
+import BookmarkArea from "../../components/index/UserBookmarkArea.vue";
 import {useStore} from "../../store/store";
 
 const {t} = useI18n();

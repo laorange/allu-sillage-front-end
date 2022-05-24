@@ -32,7 +32,7 @@ const isBookmark = computed<boolean>({
   get: () => bookmarkPaths.value.indexOf(route.fullPath) > -1,
   set: (newValue) => {
     if (newValue) {
-      store.bookmarks.push({path: route.fullPath, alias: route.fullPath});
+      store.bookmarks.push({path: route.fullPath, alias: route.path});
       showEditDialog.value = true;
     } else {
       store.bookmarks = store.bookmarks.filter(bm => (bm.path !== route.fullPath));
