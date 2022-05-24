@@ -8,6 +8,7 @@ import {useStore} from "./store/store";
 import {useStorage} from "vue3-storage";
 import {useI18n} from "vue-i18n";
 import {UserBookmark, LanguageOptions} from "./assets/ts/types";
+import LoadingMask from "./components/common/LoadingMask.vue";
 
 const store = useStore();
 const storage = useStorage();
@@ -49,8 +50,9 @@ watch(() => locale.value, async (newLocale) => {
 </script>
 
 <template>
+  <loading-mask :is-loading="store.isLoading"/>
 
-  <router-view></router-view>
+  <router-view v-if="!store.isLoading"></router-view>
   <tab-bar></tab-bar>
 
 </template>

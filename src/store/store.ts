@@ -3,8 +3,10 @@ import {formatDate, getIsoWeekDay, getWeekAmountBetweenTwoDay} from "../assets/t
 import {CourseApi} from "../assets/ts/api";
 import {ApiData, UserBookmark} from "../assets/ts/types";
 import dayjs from "dayjs";
+import constants from "../assets/constants.json";
 
 type State = {
+    isLoading: boolean
     courseApi: CourseApi
     apiData: ApiData
     filterOptions: {
@@ -21,6 +23,7 @@ type State = {
 export const useStore = defineStore("store", {
     state(): State {
         return {
+            isLoading: false,
             courseApi: new CourseApi(),
             apiData: {
                 semesterConfig: {
@@ -104,6 +107,9 @@ export const useStore = defineStore("store", {
          * 从后台获取数据，并存入 this.apiData
          */
         async updateInfoFromBackend() {
+            this.isLoading = true;
+            let timer = setTimeout(() => (this.isLoading = false), constants.NETWORK_REQUEST_TIME_LIMIT);
+
             let dateThreeDaysAgo = formatDate(dayjs().add(-3, "day"));
 
             this.courseApi.courseApiNoticeGet().then(
@@ -125,13 +131,16 @@ export const useStore = defineStore("store", {
             // 需要等待 semesterConfig 完成请求
             this.apiData.semesterConfig = (await this.courseApi.courseApiSemesterConfigGet()).data;
 
-            this.courseApi.courseApiCourseGet(`${this.apiData.semesterConfig.current_period}`).then(
-                response => (this.apiData.courses = response.data),
-            );
-
             this.courseApi.courseApiGroupGet(`${this.apiData.semesterConfig.current_period}`).then(
                 response => (this.apiData.groups = response.data),
             );
+
+            this.courseApi.courseApiCourseGet(`${this.apiData.semesterConfig.current_period}`).then(
+                response => (this.apiData.courses = response.data),
+            ).finally(() => {
+                this.isLoading = false;
+                clearTimeout(timer);
+            });
         },
     },
 });
