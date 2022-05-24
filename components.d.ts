@@ -38,6 +38,8 @@ declare module '@vue/runtime-core' {
     SillageTitle: typeof import('./src/components/SillageTitle.vue')['default']
     TabBar: typeof import('./src/components/TabBar.vue')['default']
     TopToolBar: typeof import('./src/components/TopToolBar.vue')['default']
+    TrilingualButtonGroup: typeof import('./src/components/languages/TrilingualButtonGroup.vue')['default']
+    TrilingualNaiveContainer: typeof import('./src/components/languages/TrilingualNaiveContainer.vue')['default']
     UserBookmarkArea: typeof import('./src/components/index/UserBookmarkArea.vue')['default']
     UserBookmarkEditDialog: typeof import('./src/components/index/UserBookmarkEditDialog.vue')['default']
     VanButton: typeof import('vant/es')['Button']

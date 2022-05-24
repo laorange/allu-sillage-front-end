@@ -3,22 +3,9 @@ import {useStore} from "../../store/store";
 import dayjs from "dayjs";
 import {computed, onBeforeMount} from "vue";
 import {getIsoWeekDay} from "../../assets/ts/datetimeUtils";
-import {zhCN, dateZhCN, enUS, dateEnUS, frFR, dateFrFR} from "naive-ui";
-import {useI18n} from "vue-i18n";
+import TrilingualNaiveContainer from "../languages/TrilingualNaiveContainer.vue";
 
-const {locale} = useI18n();
 const store = useStore();
-
-const naiveLocaleConfig = computed(() => {
-  switch (locale.value) {
-    case "en":
-      return {locale: enUS, date: dateEnUS};
-    case "fr":
-      return {locale: frFR, date: dateFrFR};
-    default:
-      return {locale: zhCN, date: dateZhCN};
-  }
-});
 
 const props = defineProps<{ week: number, whatDay: number, date: dayjs.Dayjs }>();
 const emits = defineEmits(["update:week", "update:whatDay", "update:date"]);
@@ -46,7 +33,7 @@ onBeforeMount(() => (localDate.value = props.date));
 </script>
 
 <template>
-  <n-config-provider :locale="naiveLocaleConfig.locale" :date-locale="naiveLocaleConfig.date">
+  <trilingual-naive-container>
     <n-date-picker v-model:value="localDateTimestamp"
                    type="date"
                    :first-day-of-week="0"
@@ -54,7 +41,7 @@ onBeforeMount(() => (localDate.value = props.date));
                    placement="bottom"
                    :is-date-disabled="dateDisableValidator"
                    :actions="['now']"/>
-  </n-config-provider>
+  </trilingual-naive-container>
 </template>
 
 <style scoped>

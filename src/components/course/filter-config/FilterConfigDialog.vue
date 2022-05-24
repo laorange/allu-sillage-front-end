@@ -2,6 +2,7 @@
 import {computed, ref} from "vue";
 import GroupPicker from "./GroupPicker.vue";
 import {Group} from "../../../assets/ts/api";
+import TrilingualButtonGroup from "../../languages/TrilingualButtonGroup.vue";
 
 const props = defineProps<{ modelValue: boolean, description: string }>();
 const emits = defineEmits(["update:modelValue"]);
@@ -27,10 +28,7 @@ const groupArray = ref<Group[]>([]);
   <n-drawer v-model:show="modelValueLocal" placement="top" height="80%">
     <n-drawer-content :title="description">
       <template #footer>
-        <n-space>
-          <van-button type="success" @click="handlers.confirm()" size="small">确定</van-button>
-          <van-button type="warning" @click="handlers.closeDialog()" size="small">取消</van-button>
-        </n-space>
+        <trilingual-button-group :on-confirm="handlers.confirm" :on-cancel="handlers.closeDialog"/>
       </template>
 
       <group-picker v-model:group-array="groupArray"/>

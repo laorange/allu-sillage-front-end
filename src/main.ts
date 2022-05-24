@@ -1,7 +1,7 @@
 import {createApp} from "vue";
 import {createPinia} from "pinia";
 import {createI18n} from "vue-i18n";
-import {languages} from "./languages";
+import {messages} from "./components/languages/messages";
 import router from "./router";
 import Vue3Storage from "vue3-storage";
 
@@ -13,7 +13,7 @@ createApp(App)
         legacy: false,
         locale: "zh",
         fallbackLocale: "en",
-        messages: languages,
+        messages: messages,
     }))
     .use(Vue3Storage)
     .use(router)
