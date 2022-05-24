@@ -9,7 +9,6 @@ declare module '@vue/runtime-core' {
     AboutOptions: typeof import('./src/components/about/AboutOptions.vue')['default']
     AboutSillage: typeof import('./src/components/about/AboutSillage.vue')['default']
     ClassroomPicker: typeof import('./src/components/common/user-input/ClassroomPicker.vue')['default']
-    ClassroonPicker: typeof import('./src/components/common/user-input/ClassroonPicker.vue')['default']
     CourseBox: typeof import('./src/components/course/CourseBox.vue')['default']
     CourseCard: typeof import('./src/components/course/CourseCard.vue')['default']
     DatePickerForWeekAndWhatDay: typeof import('./src/components/common/user-input/DatePickerForWeekAndWhatDay.vue')['default']

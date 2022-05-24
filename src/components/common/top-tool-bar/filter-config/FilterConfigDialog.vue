@@ -46,6 +46,10 @@ const groupArray = ref<Group[]>([]);
 const roomArray = ref<Classroom[]>([]);
 const methodArray = ref<string[]>([]);
 const teacherName = ref<string>("");
+
+const groupsInStore = inject("groups") as Group[];
+const classroomsInStore = inject("classrooms") as Classroom[];
+const periodInStore = inject("period") as number;
 </script>
 
 <template>
@@ -58,9 +62,9 @@ const teacherName = ref<string>("");
       <div class="filter-config-content">
         <div :style="{fontSize: 'large'}">{{ t("tip") }}</div>
 
-        <group-picker v-model:group-array="groupArray" :candidates="inject('groups')" :period="inject('period')"/>
+        <group-picker v-model:group-array="groupArray" :candidates="groupsInStore" :period="periodInStore"/>
 
-        <classroom-picker v-model:picked-rooms="roomArray" :candidates="inject('classrooms')"/>
+        <classroom-picker v-model:picked-rooms="roomArray" :candidates="classroomsInStore"/>
 
         <method-picker v-model:picked-methods="methodArray"/>
 
