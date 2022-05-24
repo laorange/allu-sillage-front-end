@@ -12,7 +12,7 @@
  */
 
 
-import url from "url";
+import * as globalImportUrl from "url";
 import {Configuration} from "./configuration";
 import globalAxios, {AxiosPromise, AxiosInstance} from "axios";
 // Some imports not used depending on template conditions
@@ -54,115 +54,115 @@ export interface Course {
     /**
      * 主码
      * @type {number}
-     * @memberof course
+     * @memberof Course
      */
     course_id: number;
     /**
      * FK-CoursePlan
      * @type {number}
-     * @memberof course
+     * @memberof Course
      */
     plan: number;
     /**
      * FK-Classroom
      * @type {number}
-     * @memberof course
+     * @memberof Course
      */
     room: number | null;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     date: string;
     /**
      *
      * @type {number}
-     * @memberof course
+     * @memberof Course
      */
     which_lesson: number;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     note?: string | null;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     update_time?: string;
     /**
      * 例如：#FFFFFF
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     color?: string;
     /**
      * 从2007.9算起的第?学期
      * @type {number}
-     * @memberof course
+     * @memberof Course
      */
     period?: number;
     /**
      * 从大一上算起的第?学期 ∈ [1,14]
      * @type {number}
-     * @memberof course
+     * @memberof Course
      */
     semester?: number;
     /**
      * 如CS21,ES22
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     code?: string | null;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     ch_name?: string;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     en_name?: string | null;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     fr_name?: string | null;
     /**
-     * course/TD/TP/Exam
+     * Course/TD/TP/Exam
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     method?: string;
     /**
      * 多对多，分组的id列表，但是字符串
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     group_ids?: string | null;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     groups_name?: string | null;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     teacher_name?: string | null;
     /**
      *
      * @type {string}
-     * @memberof course
+     * @memberof Course
      */
     room_name?: string | null;
 }
@@ -246,7 +246,7 @@ export interface CourseChangeLog {
      */
     fr_name?: string | null;
     /**
-     * course/TD/TP/Exam
+     * Course/TD/TP/Exam
      * @type {string}
      * @memberof CourseChangeLog
      */
@@ -399,7 +399,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
          */
         courseApiClassroomGet(options: any = {}): RequestArgs {
             const localVarPath = `/course/api/classroom/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -417,7 +417,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -430,7 +430,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
          */
         courseApiCourseChangeLogGet(after?: string, options: any = {}): RequestArgs {
             const localVarPath = `/course/api/CourseChangeLog/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -452,7 +452,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -461,7 +461,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
          * @summary 排课记录
          * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
          * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-         * @param {string} [method] course/TD/TP/Exam
+         * @param {string} [method] Course/TD/TP/Exam
          * @param {string} [date] 这节课的上课日期
          * @param {string} [week] 本学期的第?周
          * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
@@ -479,7 +479,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
                 throw new RequiredError("period", "Required parameter period was null or undefined when calling courseApiCourseGet.");
             }
             const localVarPath = `/course/api/course/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -541,19 +541,24 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
         /**
          * 一般用于需要用到全部分组信息的场景
          * @summary 分组名称
+         * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从SemesterConfig中请求到）
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        courseApiGroupGet(options: any = {}): RequestArgs {
+        courseApiGroupGet(period: string, options: any = {}): RequestArgs {
+            // verify required parameter 'period' is not null or undefined
+            if (period === null || period === undefined) {
+                throw new RequiredError("period", "Required parameter period was null or undefined when calling courseApiGroupGet.");
+            }
             const localVarPath = `/course/api/group/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -562,6 +567,9 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            if (period !== undefined) {
+                localVarQueryParameter["period"] = period;
+            }
 
             localVarUrlObj.query = {...localVarUrlObj.query, ...localVarQueryParameter, ...options.query};
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
@@ -571,7 +579,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -583,7 +591,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
          */
         courseApiNoticeGet(options: any = {}): RequestArgs {
             const localVarPath = `/course/api/notice/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -601,7 +609,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -613,7 +621,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
          */
         courseApiSemesterConfig1Get(options: any = {}): RequestArgs {
             const localVarPath = `/course/api/semester-config/1/`;
-            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarUrlObj = globalImportUrl.parse(localVarPath, true);
             let baseOptions;
             if (configuration) {
                 baseOptions = configuration.baseOptions;
@@ -631,7 +639,7 @@ export const CourseApiAxiosParamCreator = function (configuration?: Configuratio
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
-                url: url.format(localVarUrlObj),
+                url: globalImportUrl.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -676,7 +684,7 @@ export const CourseApiFp = function (configuration?: Configuration) {
          * @summary 排课记录
          * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
          * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-         * @param {string} [method] course/TD/TP/Exam
+         * @param {string} [method] Course/TD/TP/Exam
          * @param {string} [date] 这节课的上课日期
          * @param {string} [week] 本学期的第?周
          * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
@@ -698,11 +706,12 @@ export const CourseApiFp = function (configuration?: Configuration) {
         /**
          * 一般用于需要用到全部分组信息的场景
          * @summary 分组名称
+         * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从SemesterConfig中请求到）
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        courseApiGroupGet(options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Group>> {
-            const localVarAxiosArgs = CourseApiAxiosParamCreator(configuration).courseApiGroupGet(options);
+        courseApiGroupGet(period: string, options?: any): (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Group>> {
+            const localVarAxiosArgs = CourseApiAxiosParamCreator(configuration).courseApiGroupGet(period, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -738,6 +747,82 @@ export const CourseApiFp = function (configuration?: Configuration) {
 };
 
 /**
+ * CourseApi - factory interface
+ * @export
+ */
+export const CourseApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    return {
+        /**
+         *
+         * @summary 教室信息
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        courseApiClassroomGet(options?: any): AxiosPromise<Array<Classroom>> {
+            return CourseApiFp(configuration).courseApiClassroomGet(options)(axios, basePath);
+        },
+        /**
+         *
+         * @summary 调课日志
+         * @param {string} [after] 更新时间不晚于（为了避免消息过多，建议限定为3天内）
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        courseApiCourseChangeLogGet(after?: string, options?: any): AxiosPromise<Array<CourseChangeLog>> {
+            return CourseApiFp(configuration).courseApiCourseChangeLogGet(after, options)(axios, basePath);
+        },
+        /**
+         * 排课记录
+         * @summary 排课记录
+         * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
+         * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
+         * @param {string} [method] Course/TD/TP/Exam
+         * @param {string} [date] 这节课的上课日期
+         * @param {string} [week] 本学期的第?周
+         * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
+         * @param {string} [whichLesson] 第?节课，∈[1,5]
+         * @param {string} [after] 上课时间不早于
+         * @param {string} [before] 上课时间不晚于
+         * @param {string} [updateAfter] 更新时间不早于
+         * @param {string} [updateBefore] 更新时间不晚于
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        courseApiCourseGet(period: string, semester?: string, method?: string, date?: string, week?: string, whatDay?: string, whichLesson?: string, after?: string, before?: string, updateAfter?: string, updateBefore?: string, options?: any): AxiosPromise<Array<Course>> {
+            return CourseApiFp(configuration).courseApiCourseGet(period, semester, method, date, week, whatDay, whichLesson, after, before, updateAfter, updateBefore, options)(axios, basePath);
+        },
+        /**
+         * 一般用于需要用到全部分组信息的场景
+         * @summary 分组名称
+         * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        courseApiGroupGet(period: string, options?: any): AxiosPromise<Array<Group>> {
+            return CourseApiFp(configuration).courseApiGroupGet(period, options)(axios, basePath);
+        },
+        /**
+         *
+         * @summary 系统通知
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        courseApiNoticeGet(options?: any): AxiosPromise<Array<Notice>> {
+            return CourseApiFp(configuration).courseApiNoticeGet(options)(axios, basePath);
+        },
+        /**
+         * 当前学期的信息： + 学期戳 + 学期戳的解释性文字 + 第一周周一的日期 + 本学期共计多少周
+         * @summary 学期信息
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        courseApiSemesterConfig1Get(options?: any): AxiosPromise<SemesterConfig> {
+            return CourseApiFp(configuration).courseApiSemesterConfig1Get(options)(axios, basePath);
+        },
+    };
+};
+
+/**
  * CourseApi - interface
  * @export
  * @interface CourseApi
@@ -767,7 +852,7 @@ export interface CourseApiInterface {
      * @summary 排课记录
      * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
      * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-     * @param {string} [method] course/TD/TP/Exam
+     * @param {string} [method] Course/TD/TP/Exam
      * @param {string} [date] 这节课的上课日期
      * @param {string} [week] 本学期的第?周
      * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
@@ -785,11 +870,12 @@ export interface CourseApiInterface {
     /**
      * 一般用于需要用到全部分组信息的场景
      * @summary 分组名称
+     * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CourseApiInterface
      */
-    courseApiGroupGet(options?: any): AxiosPromise<Array<Group>>;
+    courseApiGroupGet(period: string, options?: any): AxiosPromise<Array<Group>>;
 
     /**
      *
@@ -846,7 +932,7 @@ export class CourseApi extends BaseAPI implements CourseApiInterface {
      * @summary 排课记录
      * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
      * @param {string} [semester] 从大一上算起的第?学期 ∈ [1,14]
-     * @param {string} [method] course/TD/TP/Exam
+     * @param {string} [method] Course/TD/TP/Exam
      * @param {string} [date] 这节课的上课日期
      * @param {string} [week] 本学期的第?周
      * @param {string} [whatDay] 星期?, 1:Sunday, 2:Monday, Saturday:7
@@ -866,12 +952,13 @@ export class CourseApi extends BaseAPI implements CourseApiInterface {
     /**
      * 一般用于需要用到全部分组信息的场景
      * @summary 分组名称
+     * @param {string} period 学期戳，从2007.9算起的第?学期（可以根据时间自己算，也可以从&#x60;SemesterConfig&#x60;中请求到）
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CourseApi
      */
-    public courseApiGroupGet(options?: any) {
-        return CourseApiFp(this.configuration).courseApiGroupGet(options)(this.axios, this.basePath);
+    public courseApiGroupGet(period: string, options?: any) {
+        return CourseApiFp(this.configuration).courseApiGroupGet(period, options)(this.axios, this.basePath);
     }
 
     /**

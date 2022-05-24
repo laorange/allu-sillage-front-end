@@ -106,11 +106,6 @@ export const useStore = defineStore("store", {
         async updateInfoFromBackend() {
             let dateThreeDaysAgo = formatDate(dayjs().add(-3, "day"));
 
-            this.courseApi.courseApiGroupGet().then(
-                response => {
-                    this.apiData.groups = response.data;
-                },
-            );
             this.courseApi.courseApiNoticeGet().then(
                 response => {
                     this.apiData.notices = response.data;
@@ -126,8 +121,17 @@ export const useStore = defineStore("store", {
                     this.apiData.classrooms = response.data;
                 },
             );
+
+            // 需要等待 semesterConfig 完成请求
             this.apiData.semesterConfig = (await this.courseApi.courseApiSemesterConfigGet()).data;
-            this.apiData.courses = (await this.courseApi.courseApiCourseGet(`${this.apiData.semesterConfig.current_period}`)).data;
+
+            this.courseApi.courseApiCourseGet(`${this.apiData.semesterConfig.current_period}`).then(
+                response => (this.apiData.courses = response.data),
+            );
+
+            this.courseApi.courseApiGroupGet(`${this.apiData.semesterConfig.current_period}`).then(
+                response => (this.apiData.groups = response.data),
+            );
         },
     },
 });
