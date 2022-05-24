@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {UserBookmark} from "../../assets/ts/types";
+import {UserBookmark} from "../../../../assets/ts/types";
 import {useI18n} from "vue-i18n";
 import {computed} from "vue";
-import TrilingualButtonGroup from "../languages/TrilingualButtonGroup.vue";
+import TrilingualButtonGroup from "../../languages/TrilingualButtonGroup.vue";
 
 const {t} = useI18n({
   messages: {

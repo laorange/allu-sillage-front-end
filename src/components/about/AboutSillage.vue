@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SillageTitle from "../../components/SillageTitle.vue";
+import SillageTitle from "../common/SillageTitle.vue";
 import config from "../../../package.json";
 </script>
 

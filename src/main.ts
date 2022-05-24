@@ -1,7 +1,7 @@
 import {createApp} from "vue";
 import {createPinia} from "pinia";
 import {createI18n} from "vue-i18n";
-import {messages} from "./components/languages/messages";
+import {messages} from "./components/common/languages/messages";
 import router from "./router";
 import Vue3Storage from "vue3-storage";
 

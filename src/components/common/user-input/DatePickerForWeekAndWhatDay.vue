@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {useStore} from "../../store/store";
+import {useStore} from "../../../store/store";
 import dayjs from "dayjs";
 import {computed, onBeforeMount} from "vue";
-import {getIsoWeekDay} from "../../assets/ts/datetimeUtils";
+import {getIsoWeekDay} from "../../../assets/ts/datetimeUtils";
 import TrilingualNaiveContainer from "../languages/TrilingualNaiveContainer.vue";
 
 const store = useStore();

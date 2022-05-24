@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 
-import TabBar from "./components/TabBar.vue";
+import TabBar from "./components/common/TabBar.vue";
 import {onBeforeMount, watch} from "vue";
 import {useStore} from "./store/store";
 import {useStorage} from "vue3-storage";

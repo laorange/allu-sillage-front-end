@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
-import GroupPicker from "./GroupPicker.vue";
-import {Group} from "../../../assets/ts/api";
+import GroupPicker from "../../user-input/GroupPicker.vue";
+import {Group} from "../../../../assets/ts/api";
 import TrilingualButtonGroup from "../../languages/TrilingualButtonGroup.vue";
 
 const props = defineProps<{ modelValue: boolean, description: string }>();

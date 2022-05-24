@@ -4,7 +4,7 @@ import {useI18n} from "vue-i18n";
 import FilterConfigButton from "./FilterConfigButton.vue";
 import {ref} from "vue";
 import FilterConfigDialog from "./FilterConfigDialog.vue";
-import {useStore} from "../../../store/store";
+import {useStore} from "../../../../store/store";
 
 const router = useRouter();
 const route = useRoute();

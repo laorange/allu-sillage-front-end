@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import SetBookmarkButton from "./SetBookmarkButton.vue";
-import FilterConfig from "./course/filter-config/FilterConfig.vue";
+import SetBookmarkButton from "./bookmark/SetBookmarkButton.vue";
+import FilterConfig from "./filter-config/FilterConfig.vue";
 
 </script>
 

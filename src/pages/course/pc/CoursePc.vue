@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useRoute} from "vue-router";
 import {useStore} from "../../../store/store";
-import ToolBar from "../../../components/TopToolBar.vue";
+import ToolBar from "../../../components/common/top-tool-bar/TopToolBar.vue";
 import {ref} from "vue";
 import PcCourseTitle from "../../../components/course/pc/PcCourseTitle.vue";
 

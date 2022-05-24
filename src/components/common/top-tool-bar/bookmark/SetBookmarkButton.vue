@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
-import {useStore} from "../store/store";
+import {useStore} from "../../../../store/store";
 import {useRoute} from "vue-router";
 import {useI18n} from "vue-i18n";
-import UserBookmarkEditDialog from "./index/UserBookmarkEditDialog.vue";
+import UserBookmarkEditDialog from "./UserBookmarkEditDialog.vue";
 
 const store = useStore();
 const route = useRoute();

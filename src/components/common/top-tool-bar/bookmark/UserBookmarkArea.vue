@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import {useI18n} from "vue-i18n";
-import {useStore} from "../../store/store";
-import {UserBookmark} from "../../assets/ts/types";
+import {useStore} from "../../../../store/store";
+import {UserBookmark} from "../../../../assets/ts/types";
 import {useRouter} from "vue-router";
 import UserBookmarkEditDialog from "./UserBookmarkEditDialog.vue";
 

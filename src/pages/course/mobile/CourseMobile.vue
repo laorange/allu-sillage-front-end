@@ -4,11 +4,11 @@ import {ref} from "vue";
 import {useRoute} from "vue-router";
 import {useStore} from "../../../store/store";
 
-import TopToolBar from "../../../components/TopToolBar.vue";
+import TopToolBar from "../../../components/common/top-tool-bar/TopToolBar.vue";
 import CourseBox from "../../../components/course/CourseBox.vue";
-import WeekTab from "../../../components/course/WeekTab.vue";
-import WhatDayTab from "../../../components/course/WhatDayTab.vue";
-import DatePickerForWeekAndWhatDay from "../../../components/course/DatePickerForWeekAndWhatDay.vue";
+import WeekTab from "../../../components/common/user-input/WeekTab.vue";
+import WhatDayTab from "../../../components/common/user-input/WhatDayTab.vue";
+import DatePickerForWeekAndWhatDay from "../../../components/common/user-input/DatePickerForWeekAndWhatDay.vue";
 
 const route = useRoute();
 const store = useStore();
