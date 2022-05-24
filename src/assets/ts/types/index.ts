@@ -23,3 +23,9 @@ export interface ApiData {
     courseChangeLogs: CourseChangeLog[];
     classrooms: Classroom[];
 }
+
+export interface ElementCascaderOption {
+    value: number,
+    label: string,
+    children?: ElementCascaderOption[]
+}

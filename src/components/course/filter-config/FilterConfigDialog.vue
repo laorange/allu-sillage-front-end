@@ -1,0 +1,44 @@
+<script setup lang="ts">
+import {computed, ref} from "vue";
+import GroupPicker from "./GroupPicker.vue";
+import {Group} from "../../../assets/ts/api";
+
+const props = defineProps<{ modelValue: boolean, description: string }>();
+const emits = defineEmits(["update:modelValue"]);
+
+const modelValueLocal = computed<boolean>({
+  get: () => props.modelValue,
+  set: (newValue) => emits("update:modelValue", newValue),
+});
+
+const handlers = {
+  closeDialog() {
+    modelValueLocal.value = false;
+  },
+  confirm() {
+    handlers.closeDialog();
+  },
+};
+
+const groupArray = ref<Group[]>([]);
+</script>
+
+<template>
+  <n-drawer v-model:show="modelValueLocal" placement="top" height="80%">
+    <n-drawer-content :title="description">
+      <template #footer>
+        <n-space>
+          <van-button type="success" @click="handlers.confirm()" size="small">确定</van-button>
+          <van-button type="warning" @click="handlers.closeDialog()" size="small">取消</van-button>
+        </n-space>
+      </template>
+
+      <group-picker v-model:group-array="groupArray"/>
+
+    </n-drawer-content>
+  </n-drawer>
+</template>
+
+<style scoped>
+
+</style>

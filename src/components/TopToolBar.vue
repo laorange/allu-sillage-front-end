@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SetBookmarkButton from "./SetBookmarkButton.vue";
-import FilterConfigButton from "./course/FilterConfigButton.vue";
+import FilterConfig from "./course/filter-config/FilterConfig.vue";
 
 </script>
 
@@ -20,7 +20,7 @@ import FilterConfigButton from "./course/FilterConfigButton.vue";
 
       <template #left>
         <slot name="left">
-          <filter-config-button/>
+          <filter-config/>
         </slot>
       </template>
 

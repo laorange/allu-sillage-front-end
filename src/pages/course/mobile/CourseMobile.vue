@@ -35,8 +35,12 @@ const date = ref<dayjs.Dayjs>(dayjs());
   </template>
 </template>
 
-<style scoped>
+<style>
 .course-box {
   margin-top: 10px;
+}
+
+.n-drawer .n-drawer-content .n-drawer-body-content-wrapper {
+  padding: 16px 0;
 }
 </style>
