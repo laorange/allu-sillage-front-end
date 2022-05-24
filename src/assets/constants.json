@@ -1,5 +1,11 @@
 {
   "THRESHOLD_WIDTH_OF_PC": 750,
   "SECONDS_OF_ONE_WEEK": 604800000,
-  "NETWORK_REQUEST_TIME_LIMIT": 15000
+  "NETWORK_REQUEST_TIME_LIMIT": 15000,
+  "METHODS": [
+    "Course",
+    "TD",
+    "TP",
+    "Exam"
+  ]
 }

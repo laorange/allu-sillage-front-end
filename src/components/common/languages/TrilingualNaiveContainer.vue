@@ -18,12 +18,16 @@ const naiveLocaleConfig = computed(() => {
 </script>
 
 <template>
-  <n-config-provider :locale="naiveLocaleConfig.locale" :date-locale="naiveLocaleConfig.date">
-    <slot></slot>
-  </n-config-provider>
+  <div class="trilingual-naive-container">
+    <n-config-provider :locale="naiveLocaleConfig.locale" :date-locale="naiveLocaleConfig.date">
+      <slot></slot>
+    </n-config-provider>
+  </div>
 
 </template>
 
 <style scoped>
-
+.trilingual-naive-container {
+  width: 100%;
+}
 </style>
