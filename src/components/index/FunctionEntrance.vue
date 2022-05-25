@@ -30,7 +30,7 @@ interface Entrance {
   trigger?: () => any;
 }
 
-const entrances: Entrance[] = [
+const entrances = computed<Entrance[]>(() => [
   {
     text: t("classrooms"),
     icon: "./svg/classroom.svg",
@@ -41,11 +41,11 @@ const entrances: Entrance[] = [
     icon: "./svg/exam.svg",
     trigger: () => window.open("http://new.siae.top/#/exam"),
   },
-];
+]);
 
 const maxColumnNum = window.innerWidth < constants.THRESHOLD_WIDTH_OF_PC ? 4 : 8;
 
-const columnNum = computed(() => entrances.length < maxColumnNum ? entrances.length : maxColumnNum);
+const columnNum = computed(() => entrances.value.length < maxColumnNum ? entrances.value.length : maxColumnNum);
 </script>
 
 <template>
