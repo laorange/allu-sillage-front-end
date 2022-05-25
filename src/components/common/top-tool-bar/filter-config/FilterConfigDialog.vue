@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import {computed, inject, ref} from "vue";
+import {computed, onBeforeMount} from "vue";
 import GroupPicker from "../../user-input/GroupPicker.vue";
-import {Classroom, Group} from "../../../../assets/ts/api";
 import TrilingualButtonGroup from "../../languages/TrilingualButtonGroup.vue";
 import ClassroomPicker from "../../user-input/ClassroomPicker.vue";
 import MethodPicker from "../../user-input/MethodPicker.vue";
 import {useI18n} from "vue-i18n";
 import TrilingualTextInput from "../../user-input/TrilingualTextInput.vue";
-import {useRouter} from "vue-router";
-
-const groupsInStore = inject("groups") as Group[];
-const classroomsInStore = inject("classrooms") as Classroom[];
-const periodInStore = inject("period") as number;
+import {useRoute, useRouter} from "vue-router";
+import {useStore} from "../../../../store/store";
 
 const {t} = useI18n({
   messages: {
@@ -33,7 +29,9 @@ const {t} = useI18n({
   },
 });
 
+const route = useRoute();
 const router = useRouter();
+const store = useStore();
 
 const props = defineProps<{ modelValue: boolean, description: string }>();
 const emits = defineEmits(["update:modelValue"]);
@@ -50,26 +48,59 @@ const handlers = {
   confirm() {
     handlers.closeDialog();
     router.push({
-      name: "course",
+      name: route.name ?? "course-pc",
       query: {
-        group: groupArray.value.map(group => group.group_id),
-        room: roomArray.value.map(room => room.room_id),
-        method: methodArray.value,
-        teacher: teacherName.value,
+        groups: JSON.stringify(store.filterOptions.groups.map(group => group.group_id)),
+        rooms: JSON.stringify(store.filterOptions.rooms.map(room => room.room_id)),
+        methods: JSON.stringify(store.filterOptions.methods),
+        teacher: store.filterOptions.teacher,
+        lesson: store.filterOptions.lesson,
       },
     });
   },
+  onMaskClick() {
+    modelValueLocal.value = true;
+  },
 };
 
-const groupArray = ref<Group[]>([]);
-const roomArray = ref<Classroom[]>([]);
-const methodArray = ref<string[]>([]);
-const teacherName = ref<string>("");
-const lessonName = ref<string>("");
+onBeforeMount(() => {
+  try {
+    // 读取 semester, 转化为 Group[], 存到 store.filterOptions 中
+    let semester = parseInt(route.query.semester?.toString() ?? "0");
+    store.filterOptions.groups = store.filterOptions.groups.concat(store.apiData.groups.filter(group => {
+      return group.semester === semester;
+    }) ?? []);
+
+    // 读取 groups, 并排除 semester 所属的 Group[]，避免重复添加, 存到 store.filterOptions 中
+    let groupIds = JSON.parse(route.query.groups?.toString() ?? "[]") as number[];
+    for (const groupId of groupIds) {
+      store.filterOptions.groups = store.filterOptions.groups.concat(store.apiData.groups.filter(group => {
+        return group.semester !== semester && group.group_id === groupId;
+      })[0] ?? []);
+    }
+
+    // 读取 rooms, 转化为 Classroom[], 存到 store.filterOptions 中
+    let roomIds = JSON.parse(route.query.rooms?.toString() ?? "[]") as number[];
+    for (const roomId of roomIds) {
+      store.filterOptions.rooms = store.filterOptions.rooms.concat(store.apiData.classrooms.filter(room => room.room_id === roomId)[0] ?? []);
+    }
+
+    // 读取 methods / teacher / lesson, 存到 store.filterOptions 中
+    store.filterOptions.methods = JSON.parse(route.query.methods?.toString() ?? "[]") as string[];
+    store.filterOptions.teacher = route.query.teacher?.toString() ?? "";
+    store.filterOptions.lesson = route.query.lesson?.toString() ?? "";
+  } catch (e) {
+    console.warn(e);
+  }
+});
+
 </script>
 
 <template>
-  <n-drawer v-model:show="modelValueLocal" placement="top" height="600px">
+  <n-drawer v-model:show="modelValueLocal"
+            placement="top"
+            height="600px"
+            :on-mask-click="handlers.onMaskClick">
     <n-drawer-content :title="description">
       <template #footer>
         <trilingual-button-group :on-confirm="handlers.confirm" :on-cancel="handlers.closeDialog"/>
@@ -78,15 +109,15 @@ const lessonName = ref<string>("");
       <div class="filter-config-content">
         <div :style="{fontSize: 'large'}">{{ t("tip") }}</div>
 
-        <group-picker v-model:group-array="groupArray" :candidates="groupsInStore" :period="periodInStore"/>
+        <group-picker v-model:group-array="store.filterOptions.groups" :candidates="store.apiData.groups" :period="store.current_period"/>
 
-        <classroom-picker v-model:picked-rooms="roomArray" :candidates="classroomsInStore"/>
+        <classroom-picker v-model:picked-rooms="store.filterOptions.rooms" :candidates="store.apiData.classrooms"/>
 
-        <method-picker v-model:picked-methods="methodArray"/>
+        <method-picker v-model:picked-methods="store.filterOptions.methods"/>
 
-        <trilingual-text-input v-model:value="teacherName" :placeholder="t('teacherNameInputPlaceholder')"/>
+        <trilingual-text-input v-model:value="store.filterOptions.teacher" :placeholder="t('teacherNameInputPlaceholder')"/>
 
-        <trilingual-text-input v-model:value="lessonName" :placeholder="t('lessonNameInputPlaceholder')"/>
+        <trilingual-text-input v-model:value="store.filterOptions.lesson" :placeholder="t('lessonNameInputPlaceholder')"/>
       </div>
 
     </n-drawer-content>

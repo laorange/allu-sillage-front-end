@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
-import {formatDate, getIsoWeekDay, getWeekAmountBetweenTwoDay} from "../assets/ts/datetimeUtils";
-import {CourseApi} from "../assets/ts/api";
+import {formatDate, getWeekAmountBetweenTwoDay} from "../assets/ts/datetimeUtils";
+import {Classroom, CourseApi, Group} from "../assets/ts/api";
 import {ApiData, UserBookmark} from "../assets/ts/types";
 import dayjs from "dayjs";
 import constants from "../assets/constants.json";
@@ -10,12 +10,11 @@ type State = {
     courseApi: CourseApi
     apiData: ApiData
     filterOptions: {
-        date: dayjs.Dayjs
-        classrooms: number[]
-        groups: number[]
-        teacherName: string
-        method: string
-        whatDay: number
+        groups: Group[]
+        rooms: Classroom[]
+        methods: string[]
+        teacher: string
+        lesson: string
     },
     bookmarks: UserBookmark[]
 }
@@ -39,12 +38,11 @@ export const useStore = defineStore("store", {
                 classrooms: [],
             },
             filterOptions: {
-                date: dayjs(),
-                classrooms: [],
                 groups: [],
-                teacherName: "",
-                method: "",
-                whatDay: getIsoWeekDay(dayjs()),
+                rooms: [],
+                methods: [],
+                teacher: "",
+                lesson: "",
             },
             bookmarks: [],
         };
