@@ -62,6 +62,6 @@ const showEditDialog = ref(false);
 
 .set-bookmark-area-text {
   padding-left: 4px;
-  font-size: 16px;
+  font-size: 12px;
 }
 </style>
