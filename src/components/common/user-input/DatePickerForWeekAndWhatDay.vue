@@ -8,7 +8,7 @@ import TrilingualNaiveContainer from "../languages/TrilingualNaiveContainer.vue"
 const store = useStore();
 
 const props = defineProps<{ week: number, whatDay: number, date: dayjs.Dayjs }>();
-const emits = defineEmits(["update:week", "update:whatDay", "update:date"]);
+const emits = defineEmits(["update:week", "update:whatDay"]);
 
 const localDate = computed<dayjs.Dayjs>({
   get: () => store.week1_monday_date.add(props.week - 1, "week").add(props.whatDay - 1, "day"),

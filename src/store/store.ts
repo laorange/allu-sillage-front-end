@@ -78,6 +78,19 @@ export const useStore = defineStore("store", {
     },
     actions: {
         /**
+         * 清空过滤器中的信息
+         */
+        clearFilterConfig() {
+            this.filterOptions = {
+                groups: [],
+                rooms: [],
+                methods: [],
+                teacher: "",
+                lesson: "",
+            };
+        },
+
+        /**
          * 获取某周的周一日期
          * @param week 第?周
          * */
@@ -99,6 +112,15 @@ export const useStore = defineStore("store", {
          */
         getSemesterOfGrade(grade: number) {
             return grade * 2 - this.apiData.semesterConfig.current_period % 2;
+        },
+
+        /**
+         * 对于给定的周数、星期几，返回其对应的日期 dayjs.Dayjs
+         * @param week 第几周
+         * @param whatDay 星期几 ∈ [1,7]
+         */
+        getDateForGivenWeekAndWhatDay(week: number, whatDay: number): dayjs.Dayjs {
+            return this.getMondayDateOfSomeWeek(week).add(whatDay - 1, "day");
         },
 
         /**

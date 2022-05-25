@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, onBeforeMount} from "vue";
+import {computed, watch} from "vue";
 import GroupPicker from "../../user-input/GroupPicker.vue";
 import TrilingualButtonGroup from "../../languages/TrilingualButtonGroup.vue";
 import ClassroomPicker from "../../user-input/ClassroomPicker.vue";
@@ -63,7 +63,9 @@ const handlers = {
   },
 };
 
-onBeforeMount(() => {
+function loadDataFromRoute() {
+  store.clearFilterConfig();
+
   try {
     // 读取 semester, 转化为 Group[], 存到 store.filterOptions 中
     let semester = parseInt(route.query.semester?.toString() ?? "0");
@@ -92,8 +94,9 @@ onBeforeMount(() => {
   } catch (e) {
     console.warn(e);
   }
-});
+}
 
+watch(() => route.fullPath, () => loadDataFromRoute(), {immediate:true});
 </script>
 
 <template>

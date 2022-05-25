@@ -52,8 +52,9 @@ watch(() => locale.value, async (newLocale) => {
 <template>
   <loading-mask :is-loading="store.isLoading"/>
 
-  <router-view v-if="!store.isLoading"></router-view>
-  <tab-bar></tab-bar>
+  <router-view v-if="!store.isLoading" :key="$route.fullPath"/>
+
+  <tab-bar/>
 
 </template>
 
