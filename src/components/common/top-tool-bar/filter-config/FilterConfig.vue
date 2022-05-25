@@ -10,7 +10,7 @@ const route = useRoute();
 const {t} = useI18n({
   messages: {
     zh: {
-      setFilter: "设置信息",
+      setFilter: "过滤器设置",
     },
     en: {
       setFilter: "Filter options",

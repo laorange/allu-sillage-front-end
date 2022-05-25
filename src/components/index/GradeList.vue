@@ -16,19 +16,22 @@ const {t, locale} = useI18n({
   messages: {
     zh: {
       "GradeListTitle": "SIAE-课程管理系统",
+      "filters": "过滤器设置",
     },
     en: {
       "GradeListTitle": "SIAE course Manager",
+      "filters": "Filter options",
     },
     fr: {
       "GradeListTitle": "SIAE - Administrateur de cours",
+      "filters": "Options du filtre",
     },
   },
 });
 
 const maxColumnNum = window.innerWidth < constants.THRESHOLD_WIDTH_OF_PC ? 4 : 8;
 
-const gradeNameList = computed(() => getGradeNames(locale.value as LanguageOptions))
+const gradeNameList = computed(() => getGradeNames(locale.value as LanguageOptions));
 </script>
 
 <template>
@@ -40,7 +43,7 @@ const gradeNameList = computed(() => getGradeNames(locale.value as LanguageOptio
                    @click="router.push({name: 'course-pc', query:{semester: store.getSemesterOfGrade(grade)}})"
                    :text="gradeNameList[grade-1]"/>
     <van-grid-item :icon="`./svg/searchWithFilter.svg`"
-                   :text="gradeNameList[7]"/>
+                   :text="t('filters')"/>
   </van-grid>
 </template>
 
