@@ -15,7 +15,7 @@ const valueLocal = computed<string>({
 
 <template>
   <trilingual-naive-container>
-    <n-input v-model:value="valueLocal"
+    <n-input v-model:value.trim="valueLocal"
              :placeholder="placeholder"
              :maxlength="maxLength"
              :clearable="clearable"/>
