@@ -23,6 +23,7 @@ const {t} = useI18n({
 
 <template>
   <div class="course-box">
+    <!-- 如果此处没有课 -->
     <div class="box-no-more-than-three" v-if="courses.length===0">
       <div class="card-no-more-than-three" :style="{backgroundColor: '#efefef'}">
         <n-space :vertical="true">
@@ -32,6 +33,7 @@ const {t} = useI18n({
       </div>
     </div>
 
+    <!-- 3节课以内 -->
     <div class="box-no-more-than-three" v-if="courses.length>0 && courses.length<=columnThreshold">
       <div class="card-no-more-than-three"
            v-for="course in courses" :key="course.course_id">
@@ -39,6 +41,7 @@ const {t} = useI18n({
       </div>
     </div>
 
+    <!-- 4节及以上的课 -->
     <el-scrollbar>
       <div class="box-more-than-three" v-if="courses.length>columnThreshold">
         <div class="card-more-than-three"
@@ -59,7 +62,7 @@ const {t} = useI18n({
 }
 
 .card-no-more-than-three + .card-no-more-than-three, .card-more-than-three + .card-more-than-three {
-  padding-left: 3px;
+  padding-left: 1px;
 }
 
 .card-no-more-than-three, .card-more-than-three {

@@ -70,5 +70,6 @@ const groupsAndRoomName = computed<string>(() => [props.course.groups_name, prop
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  border: 1px solid #efefef;
 }
 </style>
