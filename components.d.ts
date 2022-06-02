@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     GroupPicker: typeof import('./src/components/common/user-input/GroupPicker.vue')['default']
     LanguageSwitch: typeof import('./src/components/index/LanguageSwitch.vue')['default']
     LoadingMask: typeof import('./src/components/common/LoadingMask.vue')['default']
+    MainLine: typeof import('./src/components/course/pc/MainLine.vue')['default']
     MethodPicker: typeof import('./src/components/common/user-input/MethodPicker.vue')['default']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDatePicker: typeof import('naive-ui')['NDatePicker']
